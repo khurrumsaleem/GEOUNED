@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Developer guide &#8212; GEOUNED 0.1.dev1+ga3fd78f documentation</title>
+    <title>Developer guide &#8212; GEOUNED 0.1.dev1+gf7f4279 documentation</title>
   
   
   
@@ -35,13 +35,13 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="_static/documentation_options.js?v=1fdf0e42"></script>
+    <script src="_static/documentation_options.js?v=9381afc2"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'developer_guide';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.3';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/fusion-neutronics/GEOUNED/adding_version_support_to_docs/docs/version_switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/GEOUNED-org/GEOUNED/dev/docs/version_switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
@@ -463,6 +463,10 @@ bash<span class="w"> </span>Miniforge3-<span class="k">$(</span>uname<span class
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>freecad<span class="w"> </span>-y
 </pre></div>
 </div>
+<p>To be able to run test cases and stochastic volume calculation, it is needed to install <code class="docutils literal notranslate"><span class="pre">openmc</span></code> and <code class="docutils literal notranslate"><span class="pre">pytest</span></code> from conda-forge.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pytest<span class="w"> </span>openmc
+</pre></div>
+</div>
 <p>Fork the GEOUNED-org/GEOUNED repository by clicking this link, unchecking the Copy the main branch only check box and clicking create fork</p>
 <p><a class="github reference external" href="https://github.com/GEOUNED-org/GEOUNED/fork">GEOUNED-org/GEOUNED</a></p>
 <p>Assuming that you have <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">setup</a> and <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">added</a> SSH keys then we can clone your forked GEOUNED repository.
@@ -516,8 +520,17 @@ sphinx-build<span class="w"> </span>docs<span class="w"> </span>_build
 </pre></div>
 </div>
 <p>Then we can run the tests with the following command from the root of the repository.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pytest
+</pre></div>
+</div>
 <p>We can run individual test files by specifying the file path</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/test_convert.py
+</pre></div>
+</div>
 <p>We can run individual test functions by specifying the file path and function name</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/test_convert.py<span class="w"> </span>-k<span class="w"> </span><span class="s1">&#39;test_conversion&#39;</span>
+</pre></div>
+</div>
 <p>Additional pytest options that might be useful are including -s for standard output and -vv for very verbose output.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-s<span class="w"> </span>-vv
 </pre></div>
@@ -587,6 +600,10 @@ sphinx-build<span class="w"> </span>docs<span class="w"> </span>_build
 <p>A Conda Forge package will be built and released to the conda-forge channel.</p>
 <p>Once released the package will be visaible on the <a class="reference external" href="https://anaconda.org/conda-forge/geouned">conda-forge channel</a>.</p>
 </section>
+<section id="version-numbering">
+<h2>Version Numbering<a class="headerlink" href="#version-numbering" title="Link to this heading">#</a></h2>
+<p>GEOUNED will use Semantic Versioning to number releases of the tool, in the form “Major.Minor.Patch”, e.g., “3.15.9”.</p>
+</section>
 </section>
 
 
@@ -632,6 +649,7 @@ sphinx-build<span class="w"> </span>docs<span class="w"> </span>_build
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-a-pull-requests">Merging a pull requests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#releasing-a-new-version">Releasing a new version</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-forge-releasing">Conda Forge Releasing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-numbering">Version Numbering</a></li>
 </ul>
   </nav></div>
 

@@ -2,7 +2,7 @@ Developer guide
 ===============
 
 Developer install with Mamba
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First we need to install a Mamba distribution. There are a few options but here we opt for Miniforge3 as it includes Mamba.
 
@@ -52,6 +52,12 @@ As our main dependency FreeCAD is not available on PYPi but we can install it fr
 .. code-block:: sh
 
     mamba install -c conda-forge freecad -y
+
+To be able to run test cases and stochastic volume calculation, it is needed to install ``openmc`` and ``pytest`` from conda-forge.
+
+.. code-block:: sh
+
+    mamba install -c conda-forge pytest openmc
 
 Fork the GEOUNED-org/GEOUNED repository by clicking this link, unchecking the Copy the main branch only check box and clicking create fork
 
@@ -132,16 +138,19 @@ However we need one more dependency to run the tests.
 Then we can run the tests with the following command from the root of the repository.
 
 .. code-block:: sh
+
     python -m pytest
 
 We can run individual test files by specifying the file path
 
 .. code-block:: sh
+
     python -m pytest tests/test_convert.py
 
 We can run individual test functions by specifying the file path and function name
 
 .. code-block:: sh
+
     python -m pytest tests/test_convert.py -k 'test_conversion'
 
 Additional pytest options that might be useful are including -s for standard output and -vv for very verbose output.
@@ -235,3 +244,8 @@ Check the pull request and if the tests pass then merge the pull request.
 A Conda Forge package will be built and released to the conda-forge channel.
 
 Once released the package will be visaible on the `conda-forge channel <https://anaconda.org/conda-forge/geouned>`_. 
+
+Version Numbering
+~~~~~~~~~~~~~~~~~
+
+GEOUNED will use Semantic Versioning to number releases of the tool, in the form "Major.Minor.Patch", e.g., “3.15.9”.
